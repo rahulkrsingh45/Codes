@@ -1,0 +1,31 @@
+class Solution{
+private:
+vector<int> v;
+int i;
+void inorder(Node* root)
+{
+    if(root == NULL)
+    return;
+    inorder(root->left);
+    v.push_back(root->data);
+    inorder(root->right);
+}
+void postorder(Node* root)
+{
+    if(root == NULL)
+    return;
+    
+    postorder(root->left);
+    postorder(root->right);
+    root->data = v[i++];
+}
+  public:
+    void convertToMaxHeapUtil(Node* root)
+    {
+        // Your code goes here
+        i = 0;
+        
+        inorder(root);
+        postorder(root);
+    }    
+};
